@@ -1,7 +1,7 @@
 import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module";
 import { ConfigService } from "@nestjs/config";
-import cookieParser from "cookie-parser";
+import * as cookieParser from "cookie-parser";
 import { ValidationPipe } from "@nestjs/common";
 
 async function bootstrap() {
@@ -20,8 +20,8 @@ async function bootstrap() {
 		methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
 		allowedHeaders: ["Context-Type", "Authorizations", "Set-Cookie"],
 		exposedHeaders: ["Set-Cookie"],
-		credentials: true
-	})
+		credentials: true,
+	});
 
 	await app.listen(configService.getOrThrow<number>("PORT") ?? 8000);
 }

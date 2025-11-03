@@ -6,12 +6,13 @@ import { ServeStaticModule } from "@nestjs/serve-static";
 import { join } from "path";
 import { UsersModule } from './modules/users/users.module';
 import { FavoritesModule } from './modules/favorites/favorites.module';
-import { SubscribeModule } from './modules/subscribe/subscribe.module';
 import { ForumModule } from './modules/forum/forum.module';
 import { FilmsModule } from './modules/films/films.module';
 import { GenreModule } from './modules/genre/genre.module';
 import { NewsModule } from './modules/news/news.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { CountryModule } from './modules/country/country.module';
+import { RatingModule } from './modules/rating/rating.module';
 
 @Module({
 	imports: [
@@ -28,12 +29,13 @@ import { AuthModule } from './modules/auth/auth.module';
 		}),
 		UsersModule,
 		FavoritesModule,
-		SubscribeModule,
 		ForumModule,
 		FilmsModule,
 		GenreModule,
 		NewsModule,
 		AuthModule,
+		CountryModule,
+		RatingModule,
 	],
 })
 export class AppModule {}
