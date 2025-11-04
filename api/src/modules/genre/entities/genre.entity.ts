@@ -1,4 +1,4 @@
-import { FilmEntity } from "src/modules/films/entities/film.entity";
+import { FilmEntity } from "../../films/entities/film.entity";
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity("genre")

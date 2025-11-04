@@ -1,4 +1,4 @@
-import { UsersEntity } from "src/modules/users/entities/users.entity";
+import { UsersEntity } from "../../users/entities/users.entity";
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity("forum")
@@ -7,7 +7,7 @@ export class ForumEntity {
   id: string;
 
   @Column({ name: "user_id", type: "uuid" })
-  user_id: string;
+  userId: string;
 
   @ManyToOne(() => UsersEntity, (usersEntity) => usersEntity.forums)
   users: UsersEntity;

@@ -1,5 +1,5 @@
-import { FilmEntity } from "src/modules/films/entities/film.entity";
-import { UsersEntity } from "src/modules/users/entities/users.entity";
+import { FilmEntity } from "../../films/entities/film.entity";
+import { UsersEntity } from "../../users/entities/users.entity";
 import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity("rating")

@@ -1,6 +1,6 @@
-import { FavoriteEntity } from "src/modules/favorites/entities/favorite.entity";
-import { ForumEntity } from "src/modules/forum/entities/forum.entity";
-import { RatingEntity } from "src/modules/rating/entities/rating.entity";
+import { FavoriteEntity } from "../../favorites/entities/favorite.entity";
+import { ForumEntity } from "../../forum/entities/forum.entity";
+import { RatingEntity } from "../../rating/entities/rating.entity";
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity("users")
@@ -36,7 +36,7 @@ export class UsersEntity {
   createdAt: Date;
 
   @UpdateDateColumn({ name: "updated_at" })
-  updated_at: Date;
+  updatedAt: Date;
 
   @OneToMany(() => ForumEntity, (forumEntity) => forumEntity.users)
   forums: ForumEntity[];

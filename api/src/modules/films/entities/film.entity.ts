@@ -1,7 +1,7 @@
-import { CountryEntity } from "src/modules/country/entities/country.entity";
-import { FavoriteEntity } from "src/modules/favorites/entities/favorite.entity";
-import { GenreEntity } from "src/modules/genre/entities/genre.entity";
-import { RatingEntity } from "src/modules/rating/entities/rating.entity";
+import { CountryEntity } from "../../country/entities/country.entity";
+import { FavoriteEntity } from "../../favorites/entities/favorite.entity";
+import { GenreEntity } from "../../genre/entities/genre.entity";
+import { RatingEntity } from "../../rating/entities/rating.entity";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity("film")
