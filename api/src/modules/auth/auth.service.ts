@@ -1,11 +1,11 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { RegisterDto } from './common/dto/register.dto';
 import { compare, hash } from 'bcrypt';
 import { LoginDto } from './common/dto/login.dto';
-import { Response } from 'express';
+import { Request, Response } from 'express';
 import { IPayload } from 'src/types/jwt.interface';
 import { isDev } from 'src/utils/is-dev.util';
 
@@ -60,12 +60,36 @@ export class AuthService {
     return this.auth(res, user.id);
   }
 
+  async refresh(req: Request, res: Response) {
+    const refreshToken = req?.cookies["refresh_token"]
+
+    if (!refreshToken) {
+      throw new UnauthorizedException("Недействительный refresh токен!");
+    }
+
+    const payload: IPayload = await this.jwtService.verifyAsync(refreshToken);
+
+    if (payload) {
+      const user = await this.userService.getById(payload.id);
+
+      if (!user) {
+        throw new NotFoundException("пользователь не найден!");
+      }
+
+      return this.auth(res, user.id);
+    }
+  }
+
+  async logout(res: Response) {
+    this.setCookie(res, "refresh_token", new Date(0));
+  }
+
   private createTokens(id: string) {
 		const payload: IPayload = { id };
 
-	const accessToken = this.jwtService.sign(payload, {
-    expiresIn: this.JWT_ACCESS_TOKEN_TTL,
-  } as any);
+    const accessToken = this.jwtService.sign(payload, {
+      expiresIn: this.JWT_ACCESS_TOKEN_TTL,
+    } as any);
 
 		const refreshToken = this.jwtService.sign(payload, {
 			expiresIn: this.JWT_REFRESH_TOKEN_TTL,
