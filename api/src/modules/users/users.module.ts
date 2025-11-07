@@ -18,5 +18,6 @@ import { RatingModule } from '../rating/rating.module';
   ],
   controllers: [UsersController],
   providers: [UsersService],
+  exports: [UsersService]
 })
 export class UsersModule {}

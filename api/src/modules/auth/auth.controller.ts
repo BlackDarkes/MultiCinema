@@ -26,7 +26,7 @@ export class AuthController {
 
   @Post("login")
   @HttpCode(201)
-  async login(@Res() res: Response, @Body() dto: LoginDto) {
+  async login(@Res({ passthrough: true }) res: Response, @Body() dto: LoginDto) {
     const accessToken = await this.authService.login(res, dto);
     const user = await this.usersService.getByEmail(dto.email);
 
@@ -58,7 +58,7 @@ export class AuthController {
   }
 
   @Auth()
-  @Get("me")
+  @Get("@me")
   @HttpCode(200)
   async me(@Authorize() user) {
     return user
