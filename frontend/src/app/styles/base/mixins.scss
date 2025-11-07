@@ -1,0 +1,72 @@
+@use "./function.scss" as *;
+@use "./media.scss" as *;
+@use "../base/variables.scss" as *;
+
+@mixin fluid-text($max, $min) {
+  font-size: fluid($max, $min);
+}
+
+@mixin svg($color) {
+  & svg,
+  & svg * {
+    fill: $color;
+  }
+}
+
+@mixin svg-hover($transition, $color) {
+  & svg,
+  & svg * {
+    transition: $transition;
+  }
+
+  @include hover() {
+    & svg,
+    & svg * {
+      fill: $color;
+    }
+  }
+}
+
+$focusColor: $accentOrange !default;
+
+@mixin focus($color: $focusColor) {
+  outline: 1px solid transparent;
+  outline-offset: rem(5);
+
+  &:focus-visible {
+    outline-color: $color;
+  }
+}
+
+@mixin active() {
+  &:active {
+    translate: 0 rem(1);
+  }
+}
+
+@mixin underline($color) {
+  position: relative;
+  transition: $smallTransition;
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: rem(-3);
+    left: 0;
+    width: 100%;
+    height: rem(2);
+    background-color: $color;
+    scale: 0;
+    transform-origin: left;
+    transition: $smallTransition;
+  }
+
+  @include hover() {
+    text-decoration: none;
+
+    &::before {
+      scale: 1;
+      transform-origin: left;
+    }
+  }
+}
