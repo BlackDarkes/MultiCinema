@@ -1,1 +1,1 @@
-export {  } from "./ui/Header/Header"
+export { Header } from "./ui/Header/Header";
