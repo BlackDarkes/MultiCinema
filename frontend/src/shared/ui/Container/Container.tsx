@@ -3,8 +3,9 @@ import styles from "./Container.module.scss";
 
 interface IContainerProps {
 	children: ReactNode;
+  className?: string;
 }
 
-export const Container = ({ children }: IContainerProps) => {
-	return <div className={styles.container} >{children}</div>;
+export const Container = ({ children, className }: IContainerProps) => {
+	return <div className={`${styles.container} ${className ? className : ""}`} >{children}</div>;
 };

@@ -1,0 +1,11 @@
+.list {
+  display: flex;
+  justify-content: space-between;
+  column-gap: clamp(rem(118), 7vw, rem(80));
+
+  &Link {
+    font-weight: 400;
+
+    @include fluid-text(25, 20)
+  }
+}

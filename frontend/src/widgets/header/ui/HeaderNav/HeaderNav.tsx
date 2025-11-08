@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import styles from "./HeaderNav.module.scss";
 
 interface IHeaderNavProps {
 	list: string[];
@@ -6,10 +7,10 @@ interface IHeaderNavProps {
 
 export const HeaderNav = ({ list }: IHeaderNavProps) => {
 	return (
-		<ul>
+		<ul className={styles.list}>
 			{list.map((item, index) => (
 				<li key={index}>
-					<Link to={`/${item}`}>{item}</Link>
+					<Link to={`/${item}`} className={styles.listLink}>{item}</Link>
 				</li>
 			))}
 		</ul>
