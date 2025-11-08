@@ -1,0 +1,1 @@
+export { baseApi, publicApi } from "./instance/apiInstance"

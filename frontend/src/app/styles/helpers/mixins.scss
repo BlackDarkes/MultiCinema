@@ -2,6 +2,8 @@
 @use "./media.scss" as *;
 @use "../base/variables.scss" as *;
 
+
+
 @mixin fluid-text($max, $min) {
   font-size: fluid($max, $min);
 }
